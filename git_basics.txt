@@ -1,0 +1,18 @@
+Applies to files that are tracked by git
+
+*** 3 Stages of a File
+
+
+* Committed
+* Modified
+* Staged
+
+*** 3 Git Project Stages
+
+Working Directory : Changes to files since the last checkout have not yet been added to the staging area for commit
+
+Staging Area(Index) : Files in this state have been modified and added to be staged in the next commit snapshot
+
+.git directory(Repository) : Files in this state are committed and recorded to the project as version snapshots
+
+

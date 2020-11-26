@@ -40,6 +40,9 @@ Git basic commands
 	
 * git diff --staged
 
+* git commit -a -m "message here"
+
+
 
 
 

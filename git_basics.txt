@@ -72,7 +72,13 @@ Remove and Move Files
 http://git-school.github.io/visualizing-git
 
 
-*git checkout -b new_branch
+* git checkout -b new_branch
+* git checkout master
+* git stash list
+* git stash show
+* git stash pop
+
+
  
 
 

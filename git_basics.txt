@@ -42,6 +42,44 @@ Git basic commands
 
 * git commit -a -m "message here"
 
+* git push origin master
+
+*** Commit History
+
+* git log
+* git log -1
+* git log --oneline
+* git log --stat
+* git log --patch
+* https://chris.beams.io/posts/git-commit/
+
+Remove and Move Files
+
+* git rm filename
+* git status
+* The removed filename will be shown and 'deleted' and completly remove
+  from project on the next commit.
+  
+* git rm --cached filename
+* git status
+* The filename is now shows under - "Untracked files:" and still shows in
+  the project
+  
+  
+* git mv filename filename1
+
+***********************BRANCHES*****************
+http://git-school.github.io/visualizing-git
+
+
+*git checkout -b new_branch
+ 
+
+
+
+
+
+
 
 
 

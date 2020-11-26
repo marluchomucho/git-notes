@@ -88,6 +88,11 @@ http://git-school.github.io/visualizing-git
 * git reset --hard
 
 
+* git pull from remote
+
+* git clone "repository url"
+
+
 
  
 

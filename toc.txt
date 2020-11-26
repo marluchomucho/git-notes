@@ -1,0 +1,9 @@
+* Table of Content
+- About Git
+- Git Project Stages
+- Initializing Git/GitHub
+- Basic Commands
+- Branches
+- Merge/Reset
+- Pull from Remote Origin
+

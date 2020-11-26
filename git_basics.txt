@@ -79,6 +79,16 @@ http://git-school.github.io/visualizing-git
 * git stash pop
 
 
+* git merge new_brance
+
+*** Git Reset
+
+* git reset --soft
+* git reset --mixed
+* git reset --hard
+
+
+
  
 
 

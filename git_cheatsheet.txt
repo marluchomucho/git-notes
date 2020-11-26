@@ -7,3 +7,4 @@ git diff
 git diff --staged
 
 git commit -a -m "message here"
+git push origin master

@@ -16,3 +16,31 @@ Staging Area(Index) : Files in this state have been modified and added to be sta
 .git directory(Repository) : Files in this state are committed and recorded to the project as version snapshots
 
 
+Initializing a New Git Repository
+
+* git init
+* git add .
+* git commit -m "first commit"
+
+Git and GitHub
+
+* git remote add origin "https://github.com/marluchomucho/git-notes.git"
+* git push -u origin master
+
+Git basic commands 
+
+* git status --short
+* git add filename.txt
+* git reset HEAD <filename> to unstage
+
+
+* git diff
+	- Changes ready to be committed.
+	- Changes made and not yet staged.
+	
+* git diff --staged
+
+
+
+
+

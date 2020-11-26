@@ -1,0 +1,9 @@
+git add .
+git add filename
+git status
+git status --short
+git commit
+git diff
+git diff --staged
+
+git commit -a -m "Message here"

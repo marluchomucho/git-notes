@@ -1,0 +1,19 @@
+Git Hosting Options
+
+- Managed Service : GitHub, GitLab(SaaS), BitBucket, Microsoft Azure DevOps Repos
+
+- Self-manage Service : 
+
+- Third-party Solution :  GitLab (self-managed), GitBucket, Gogs, Gitea
+
+Type of Git Protocols
+
+- Local Protocol
+
+- Remote Protocols
+
+  - SSH Protocol
+  - HTTP/S Protocol
+  - Git Protocol
+
+

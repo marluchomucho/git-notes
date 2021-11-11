@@ -1,0 +1,282 @@
+*** Git Configuration
+
+- Git Configuration Structure
+  Note: Configurations value are evaluated from repository level up.
+
+  * 3 Levels: local, global and system
+
+    - Repository(local)
+    - User account(global)
+    - Git installation(system)
+  
+  * Common Configuration Settings:
+    
+    - Identity Settings
+    - File editor
+    - Merge tool
+    - Terminal color output
+    - Command aliases
+  
+   * View Config Values
+    
+    - git config --list --show-origen
+    - git config user.name
+
+   * Removing Git Config Values
+    
+    - git config --global --unset user.name
+    - git config --global --edit
+    - git config --global --remove-section user
+
+
+- Configuring a Git Installation
+
+   * Global configuration
+ 
+    - git config --global user.name "First Name"
+    - git config --global user.email firstname@gmail.com
+   
+  * Create a repository
+   
+   - mkdir repo
+   - cd repo   
+   - git init
+   
+  * Review all configurations
+
+   - git config --list --show-origin
+   - git config --local user.email firstname@hotmail.com
+   - git config user.email
+
+  * Config editor
+
+   - git config --global core.editor "code --new-window --wait"
+   - git config --global -e 
+   
+  * Config Diff Tool .gitconfig
+
+   - [diff]
+       tool = vscode-diff
+   - [difftool]
+       prompt = false
+   - [difftool "vscode-diff"]
+       cmd = code --wait --diff $LOCAL $REMOTE
+
+   - git difftool 
+
+  * Conf merge tool
+
+   - [merge]
+       prompt = vscode-merge
+   - [mergetool]
+       keepBackup = false
+   - [mergetool "vscode-merge"]
+       cmd = code --wait $MERGED
+  * Alias
+   
+   - git config --global alias.st status
+   - git st
+   - git config --global alias.ss "st --short"
+   - git ss
+   - git config --global alias.egc "config --global -e:
+   - git egc
+
+  * Git Attributes
+ 
+   - .gitignore     : Allows to ignore files
+   - .gitattributes : configuration of how to handle files
+
+  * Git Attributes Common Uses
+
+   - Configuring line ending in files
+   - Specifying binary files
+   - Enabling large binary files to be handled by Git LFS
+   - Excluding files from exported version fo repository
+   - Specifying clean and smudge filters
+
+  * Using Attributes in Git 
+  *************************
+
+*** Utilizing Git Submodules
+
+  * Understanding Git Submodules
+    
+    Package Manger
+    Git Subtrees
+   - Git Submodule : A construct within Git that enables you to keep a 
+                     separate Git repository as a subdirectory with an 
+                     existing repostiry. This effectively keeps two separate
+                     repositories linked together within a project.
+
+   * About Git Submodules
+    
+    - Utilizing submodules adds complexity especially when working with a team
+    - Package managers should be leveraged if possible
+    - Submodules are fully supported way to include other repos in your project
+    - Submodules are the most common manner to include other repos
+
+   * Adding a Submodule
+
+    - git submodule add https://github.com/davidtucker/example-submodule.git external/repo1
+      -  Connects the submodule's git repository to our current repository
+
+      repo/.gitmodules
+
+   * Working with Submodules
+
+    - Submodules are truly their own repositories
+    - Do not automatically track to a branch but rather a specific commit
+    - Must be updated explicitly
+    - Can also contain other submodules
+    - Can be edited and updated just as a normal repository
+
+
+  * Adding Submodule to a Project
+
+    - Git Version
+    - Add
+      - mkdir external
+      - git submodule add https://github.com/davidtucker/example-submodule.git external/example-submodule
+      - cd external/example-submodule
+      - ls
+      - cd ../..
+      - cat .gitsubmodules
+      - git status
+      - git add .
+      - git commit -m "Adding example submodule"
+      - git config --global diff.submodule log
+      - cd ..
+      - git clone repo clone
+      - cd clone
+      - ls
+      - cd external/example-submodule
+      - ls 
+      - cd ../..
+      - git submodule init
+      - cd external/example-submodule
+      - ls
+      - git fetch 
+      - git checkout beta
+      - cd ../..
+      - git status
+      - git commit -am "Updating submodules to beta"
+   - Delete
+      - git submodule deinit external/example-submodule
+      - git rm external/example-submodule
+      - git status
+      - git commit -am "Removing submodule"
+   
+  * Using Submodules with Teams
+    
+   - Leveraging nested submodules
+   - Understanding team considarations for submodules
+   - Editing a submodule in place
+   - Pushing to remote with submodules
+   ***************************************************
+   - cat .gitmodules
+   - git submodule foreach 'cat .gitmodules'
+   ***************************************************
+   - git pull
+   - git submodule sync --recursive
+   - git submodule update --init --recursive
+   ***************************************************
+   - cd external/repo1/
+   - git checkout master
+   - git pull --rebase
+   - touch "Editing a submodule" >> README.md
+   - git commit -am "updating the README"
+   
+   - cd ../../
+   - git status
+   - git commit -am "Updating our submodule code"
+   - git config --global push.recurseSubmodules on-demand
+   - git push
+	
+
+  
+    
+   
+
+*** Implement a Git Workflow
+
+- Introduction to Git Hooks
+  Git Hook : A pre-defined script that is executed in reponse to a
+             specific action that has occurred withing your Git repo.
+  
+  - Client Side Hooks
+    - Designed to improve workflow for developers using repository
+    - Cannot enforce policies as local repository can be configured
+    - Often leveraged to run pre-commit checks against code
+      USE CASES:
+      - Linting files
+      - Running tests
+      - Verifying no TODO's in committed code
+      - Preparing a commit message
+      - Cleaning up files after specific actions
+   
+  - Sever Side Hooks
+    - Can enforce team policies
+    - For rejecting pushes based on overall policies, use pre-receive
+    - For evaluating of individual branch pushes, use update
+    - For notifications and hooks after the commit, use post-receive
+      USE CASES:
+      - Enforcing commit message format
+      - Enforcing user identity information
+      - Enforcing the signing of tags and/ commits
+
+- Implementing Client-side Hooks
+
+  - git --version
+  - git reset --hard
+  - git config --local cor.hoosPath .githooks
+  - mkdir .githooks
+  - mv .git/hooks/pre-commit .githooks/
+
+- Implementing Server-side Hooks
+  
+  - touch hooks/pre-receive
+  - chmod +x hooks/pre-receive
+  - vim .gitignore
+  - git commit -am "updating .gitignore"
+  - git push
+  
+- Creating Custom Git Commands
+
+  - mkdir ~/git-scripts
+  - vim git-testscript
+  - chmod +x git-testscript
+  - echo 'export PATH="/users/username/git-scripts:$PATH" >> ~/.zshrc
+  - source ~/.zshrc
+  - git testscript
+  - vim git-subpull
+  - chmod +x git-subpull
+
+  - git subpull 
+
+
+*** Finding Bugs with Git
+
+- Using Git Bisect
+  A tool included with Git that enables you to specify a start and end
+  commit and either manually or automatically determine the point fo failure
+  within tha range of commits.
+
+ - git bisect start 
+ - git bisect good
+ - git bisect bad
+
+ - git bisect run npm test
+ - git bisect reset
+
+- Detecting Bad Commits with Git Bisect
+
+  - git bisect start
+    - git bisect good cd95e65
+    - git bisect bad b7cd593
+    - git bisect show
+
+  - git bisect start 
+    - git bisect good cd93e60
+    - git bisect bad  b7cd593
+    - git bisect run npm test
+    
